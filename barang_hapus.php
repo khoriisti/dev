@@ -11,11 +11,11 @@ while($d = mysqli_fetch_array($data)){
 $kd_jenis = $d['kd_jenis'];
 $kd_barang = $d['kd_barang'];
 
-echo $d['kd_jenis'], $d['kd_barang'];
+mysqli_query($koneksi,"delete from tb_barang where kd_barang='$kd_barang'");
+mysqli_query($koneksi,"delete from tb_jenis where kd_jenis='$kd_jenis'");
 
-	}
- 
- 
+}
+
 // menghapus data dari database
 //mysqli_query($koneksi,"delete from tb_jenis where kd_jenis='$id'");
 
@@ -24,7 +24,7 @@ echo $d['kd_jenis'], $d['kd_barang'];
 //echo "<meta http-equiv='refresh' content='2; url=kategori.php'>";
 //echo "header("location:kategori.php?pesan=hapus")";
 
-// mengalihkan halaman kembali ke index.php
-//header("location:kategori.php?pesan=hapus");
+//mengalihkan halaman kembali ke index.php
+header("location:barang.php?pesan=hapus");
  
 ?>
