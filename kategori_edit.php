@@ -24,6 +24,7 @@
 				<td>Nama Kategori</td>
 				<td><input type="text" name="nama_kategori" value="<?php echo $d['nama_kategori']; ?>"><input type="hidden" name="kd_kategori" value="<?php echo $d['kd_kategori']; ?>"></td>					
 			</tr>
+			<!--
 			<tr>
 				<td>Status</td>
 				<td>
@@ -35,6 +36,7 @@
 					</select>
 				</td>
 			</tr>
+			-->
 			<tr>
 				<td></td>
 				<td><input type="submit" value="Simpan"></td>					

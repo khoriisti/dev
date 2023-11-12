@@ -27,7 +27,6 @@
 		<tr>
 			<th>No</th>
 			<th>Nama Kategori</th>
-			<th>Status</th>
 			<th colspan=2>Aksi</th>	
 		</tr>
 		<?php 
@@ -39,7 +38,6 @@
 		<tr>
 			<td><?php echo $nomor++; ?></td>
 			<td><?php echo $data['nama_departemen']; ?></td>
-			<td><?php echo $data['status']; ?></td>
 			<td>
 				<a class="edit" href="departemen_edit.php?id=<?php echo $data['kd_departemen']; ?>">Edit</a> |
 				<a class="hapus" href="departemen_hapus.php?id=<?php echo $data['kd_departemen']; ?>">Hapus</a>					
