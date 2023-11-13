@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 01, 2023 at 11:04 PM
+-- Generation Time: Nov 13, 2023 at 03:21 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tb_barang` (
-  `kd_barang` int(3) NOT NULL,
+  `kd_barang` varchar(4) NOT NULL,
   `nama_barang` varchar(30) NOT NULL,
   `deskripsi` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -39,8 +39,8 @@ CREATE TABLE `tb_barang` (
 --
 
 INSERT INTO `tb_barang` (`kd_barang`, `nama_barang`, `deskripsi`) VALUES
-(1, 'Tinta HP 80 A', 'Untuk Printer'),
-(2, 'Acer Veriton M481', 'Notebook1');
+('B001', 'Tinta HP 80 A Black', 'Untuk Printer'),
+('B002', 'Acer Veriton M480', 'Notebook');
 
 -- --------------------------------------------------------
 
@@ -49,32 +49,31 @@ INSERT INTO `tb_barang` (`kd_barang`, `nama_barang`, `deskripsi`) VALUES
 --
 
 CREATE TABLE `tb_departemen` (
-  `kd_departemen` int(3) NOT NULL,
-  `nama_departemen` varchar(30) NOT NULL,
-  `status` varchar(15) NOT NULL
+  `kd_departemen` varchar(3) NOT NULL,
+  `nama_departemen` varchar(30) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_departemen`
 --
 
-INSERT INTO `tb_departemen` (`kd_departemen`, `nama_departemen`, `status`) VALUES
-(1, 'IT', 'Aktif'),
-(2, 'Accounting', 'Aktif'),
-(3, 'Manufacturing', 'Aktif'),
-(4, 'PPIC', 'Aktif'),
-(5, 'Purchasing', 'Aktif'),
-(6, 'Personalia', 'Aktif'),
-(7, 'Produksi', 'Aktif'),
-(8, 'Maintenance', 'Aktif'),
-(9, 'WH RM', 'Aktif'),
-(10, 'WH FG', 'Aktif'),
-(11, 'QC', 'Aktif'),
-(12, 'Sales C1A', 'Aktif'),
-(13, 'Sales C1B', 'Aktif'),
-(14, 'Sales C2', 'Aktif'),
-(15, 'Distribusi', 'Aktif'),
-(16, 'WH DC', 'Aktif');
+INSERT INTO `tb_departemen` (`kd_departemen`, `nama_departemen`) VALUES
+('D01', 'IT'),
+('D02', 'Accounting'),
+('D03', 'Manufacturing'),
+('D04', 'PPIC'),
+('D05', 'Purchasing'),
+('D06', 'Personalia'),
+('D07', 'Produksi'),
+('D08', 'Maintenance'),
+('D09', 'WH RM'),
+('D10', 'WH FG'),
+('D11', 'QC'),
+('D12', 'Sales C1A'),
+('D13', 'Sales C1B'),
+('D14', 'Sales C2'),
+('D15', 'Distribusi'),
+('D16', 'WH DC');
 
 -- --------------------------------------------------------
 
@@ -83,18 +82,18 @@ INSERT INTO `tb_departemen` (`kd_departemen`, `nama_departemen`, `status`) VALUE
 --
 
 CREATE TABLE `tb_jenis` (
-  `kd_jenis` int(3) NOT NULL,
-  `kd_kategori` int(2) NOT NULL,
-  `kd_barang` int(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `kd_jenis` varchar(4) CHARACTER SET latin1 NOT NULL,
+  `kd_kategori` varchar(3) CHARACTER SET latin1 NOT NULL,
+  `kd_barang` varchar(4) CHARACTER SET latin1 NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tb_jenis`
 --
 
 INSERT INTO `tb_jenis` (`kd_jenis`, `kd_kategori`, `kd_barang`) VALUES
-(1, 1, 1),
-(2, 5, 2);
+('J001', 'K01', 'B001'),
+('J002', 'K05', 'B002');
 
 -- --------------------------------------------------------
 
@@ -103,22 +102,21 @@ INSERT INTO `tb_jenis` (`kd_jenis`, `kd_kategori`, `kd_barang`) VALUES
 --
 
 CREATE TABLE `tb_kategori` (
-  `kd_kategori` int(2) NOT NULL,
-  `nama_kategori` varchar(50) NOT NULL,
-  `status` varchar(15) NOT NULL
+  `kd_kategori` varchar(3) NOT NULL,
+  `nama_kategori` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_kategori`
 --
 
-INSERT INTO `tb_kategori` (`kd_kategori`, `nama_kategori`, `status`) VALUES
-(1, 'Tinta / Toner', 'Aktif'),
-(2, 'Hardware', 'Aktif'),
-(3, 'Software', 'Aktif'),
-(4, 'Networking', 'Aktif'),
-(5, 'PC / Notedbook', 'Aktif'),
-(6, 'Monitor', 'Aktif');
+INSERT INTO `tb_kategori` (`kd_kategori`, `nama_kategori`) VALUES
+('K01', 'Tinta / Toner'),
+('K02', 'Hardware'),
+('K03', 'Software'),
+('K04', 'Networking'),
+('K05', 'PC / Notedbook'),
+('K06', 'Monitor');
 
 -- --------------------------------------------------------
 
@@ -235,30 +233,6 @@ ALTER TABLE `tb_user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `tb_barang`
---
-ALTER TABLE `tb_barang`
-  MODIFY `kd_barang` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `tb_departemen`
---
-ALTER TABLE `tb_departemen`
-  MODIFY `kd_departemen` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT for table `tb_jenis`
---
-ALTER TABLE `tb_jenis`
-  MODIFY `kd_jenis` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `tb_kategori`
---
-ALTER TABLE `tb_kategori`
-  MODIFY `kd_kategori` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
