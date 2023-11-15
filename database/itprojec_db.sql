@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2023 at 03:21 PM
+-- Generation Time: Nov 15, 2023 at 04:09 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -25,6 +25,48 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_ambil`
+--
+
+CREATE TABLE `tb_ambil` (
+  `kd_ambil` varchar(9) NOT NULL,
+  `tgl_ambil` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `nama_ambil` varchar(30) NOT NULL,
+  `ambil_barang` int(2) NOT NULL,
+  `ambil_total` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tb_ambil`
+--
+
+INSERT INTO `tb_ambil` (`kd_ambil`, `tgl_ambil`, `nama_ambil`, `ambil_barang`, `ambil_total`) VALUES
+('BA1023001', '2023-10-26 07:20:11', 'Azza', 2, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_ambil_detail`
+--
+
+CREATE TABLE `tb_ambil_detail` (
+  `kd_ambil` varchar(9) NOT NULL,
+  `kd_jenis` varchar(4) NOT NULL,
+  `kd_departemen` varchar(3) NOT NULL,
+  `stok_ambil` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tb_ambil_detail`
+--
+
+INSERT INTO `tb_ambil_detail` (`kd_ambil`, `kd_jenis`, `kd_departemen`, `stok_ambil`) VALUES
+('BA1023001', 'J016', 'D14', 2),
+('BA1023001', 'J017', 'D14', 2);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_barang`
 --
 
@@ -41,6 +83,33 @@ CREATE TABLE `tb_barang` (
 INSERT INTO `tb_barang` (`kd_barang`, `nama_barang`, `deskripsi`) VALUES
 ('B001', 'Tinta HP 80 A Black', 'Untuk Printer'),
 ('B002', 'Acer Veriton M480', 'Notebook');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_datang`
+--
+
+CREATE TABLE `tb_datang` (
+  `kd_datang` varchar(9) NOT NULL,
+  `tgl_datang` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `no_pr` int(30) NOT NULL,
+  `datang_barang` int(2) NOT NULL,
+  `datang_total` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_datang_detail`
+--
+
+CREATE TABLE `tb_datang_detail` (
+  `kd_datang` varchar(9) NOT NULL,
+  `kd_jenis` varchar(4) NOT NULL,
+  `kd_departemen` varchar(3) NOT NULL,
+  `stok_datang` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -121,25 +190,6 @@ INSERT INTO `tb_kategori` (`kd_kategori`, `nama_kategori`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_pembelian`
---
-
-CREATE TABLE `tb_pembelian` (
-  `kd_pembelian` int(3) NOT NULL,
-  `nomor_pr` varchar(10) NOT NULL,
-  `tgl_pembelian` date NOT NULL,
-  `periode` int(1) NOT NULL,
-  `kd_departemen` int(3) NOT NULL,
-  `nm_departemen` varchar(30) NOT NULL,
-  `kd_barang` int(3) NOT NULL,
-  `nm_barang` varchar(30) NOT NULL,
-  `keterangan` varchar(15) NOT NULL,
-  `qty` int(3) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tb_peminjaman`
 --
 
@@ -152,26 +202,6 @@ CREATE TABLE `tb_peminjaman` (
   `keterangan` varchar(50) NOT NULL,
   `qty` int(3) NOT NULL,
   `status` varchar(15) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_pengambilan`
---
-
-CREATE TABLE `tb_pengambilan` (
-  `kd_pengambilan` int(3) NOT NULL,
-  `tgl_ambil` date NOT NULL,
-  `periode` varchar(2) NOT NULL,
-  `nama_pengambilan` varchar(50) NOT NULL,
-  `kd_departemen` int(3) NOT NULL,
-  `nm_departemen` varchar(30) NOT NULL,
-  `kd_barang` int(3) NOT NULL,
-  `nm_barang` varchar(30) NOT NULL,
-  `kd_kategori` int(3) NOT NULL,
-  `nm_kategori` varchar(30) NOT NULL,
-  `qty` int(3) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -201,10 +231,22 @@ INSERT INTO `tb_user` (`userId`, `nama_user`, `kd_departemen`, `password`, `lvl`
 --
 
 --
+-- Indexes for table `tb_ambil`
+--
+ALTER TABLE `tb_ambil`
+  ADD PRIMARY KEY (`kd_ambil`);
+
+--
 -- Indexes for table `tb_barang`
 --
 ALTER TABLE `tb_barang`
   ADD PRIMARY KEY (`kd_barang`);
+
+--
+-- Indexes for table `tb_datang`
+--
+ALTER TABLE `tb_datang`
+  ADD PRIMARY KEY (`kd_datang`);
 
 --
 -- Indexes for table `tb_departemen`
