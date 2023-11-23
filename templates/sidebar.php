@@ -22,42 +22,53 @@
       </div>
 
       <!-- Sidebar Menu -->
+      <?php
+
+        $namaHalaman = $_SERVER['PHP_SELF'];
+
+        $namaArray = explode('/',$namaHalaman);
+
+        $jumlah = count($namaArray);
+
+        $namaHalaman = $namaArray[$jumlah-1];
+
+      ?>
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+          <li class="nav-item">
+            <a href="index.php" class="<?php echo ($namaHalaman=='index.php')?'nav-link active':'nav-link';?>">
+              <i class="nav-icon fas fa-th"></i>
               <p>
                 Dashboard
               </p>
             </a>
           </li>
           
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-database"></i>
+          <li class="<?php echo ($namaHalaman=='barang.php' or $namaHalaman=='kategori.php' or $namaHalaman=='area.php')?'nav-item menu-open':'nav-item';?>">
+            <a href="#" class="<?php echo ($namaHalaman=='barang.php' or $namaHalaman=='kategori.php' or $namaHalaman=='area.php')?'nav-link active':'nav-link';?>">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Data Master
-                <i class="fas fa-angle-left right"></i>
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
+                <a href="barang.php" class="<?php echo ($namaHalaman=='barang.php')?'nav-link active':'nav-link';?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Barang</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
+                <a href="kategori.php" class="<?php echo ($namaHalaman=='kategori.php')?'nav-link active':'nav-link';?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kategori</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/buttons.html" class="nav-link">
+                <a href="area.php" class="<?php echo ($namaHalaman=='area.php')?'nav-link active':'nav-link';?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Area</p>
                 </a>
