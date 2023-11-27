@@ -46,8 +46,8 @@
             </a>
           </li>
           
-          <li class="<?php echo ($namaHalaman=='barang.php' or $namaHalaman=='kategori.php' or $namaHalaman=='area.php')?'nav-item menu-open':'nav-item';?>">
-            <a href="#" class="<?php echo ($namaHalaman=='barang.php' or $namaHalaman=='kategori.php' or $namaHalaman=='area.php')?'nav-link active':'nav-link';?>">
+          <li class="<?php echo ($namaHalaman=='barang.php' or $namaHalaman=='kategori.php' or $namaHalaman=='area.php' or $namaHalaman=='area_input.php')?'nav-item menu-open':'nav-item';?>">
+            <a href="#" class="<?php echo ($namaHalaman=='barang.php' or $namaHalaman=='kategori.php' or $namaHalaman=='area.php' or $namaHalaman=='area_input.php')?'nav-link active':'nav-link';?>">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Data Master
@@ -68,7 +68,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="area.php" class="<?php echo ($namaHalaman=='area.php')?'nav-link active':'nav-link';?>">
+                <a href="area.php" class="<?php echo ($namaHalaman=='area.php' or $namaHalaman=='area_input.php')?'nav-link active':'nav-link';?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Area</p>
                 </a>
