@@ -7,11 +7,11 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-primary" role="alert">
           Data Area
         </div>
 
-        <a href="area_input.php"><div class="btn btn-sm btn-primary"><i class="fas fa-plus fa-sm"></i> Tambah Area</div></a>
+        <a href="area_input.php"><div class="btn btn-sm btn-success"><i class="fas fa-plus fa-sm"></i> Tambah Area</div></a>
 
       </div><!-- /.container-fluid -->
     </div>
